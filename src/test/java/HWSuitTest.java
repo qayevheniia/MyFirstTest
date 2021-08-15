@@ -13,13 +13,11 @@ public class HWSuitTest {
     private final String baseUrl = "https://lms.ithillel.ua/auth";
     private final String expLinkAfterSignIn = "https://lms.ithillel.ua/";
     private final String expLinkSupport = "https://t.me/hillel_bot";
-
     private final String emailValid = "qayevheniia@gmail.com";
     private final String passwordValid = "Mzhenya1987)";
     private final String emailInvalid = "QA1212122@mvm.com";
     private final String passwordInvalid = "232131";
     String expAlertInvalidLogin = "Incorrect email or password";
-
 
 //    the general wait-locators for pages
     String waitElementAfterSignIn = "//*[contains(text(), ' QA Automation ')]";
@@ -27,14 +25,13 @@ public class HWSuitTest {
     String waitElementBaseUrl = ".button.button--light-blue.button--simple.ng-star-inserted";
     String waitAlertWrongCredential = ".validation-messages__item.ng-star-inserted";
 
+//    general locators
     By emailField = (By.xpath("//input[@type='email']"));
     By passwordField = (By.xpath("//input[@type='password']"));
     By submitButtonSignIn = (By.cssSelector(".button--light-blue.button--simple.ng-star-inserted"));
     By supportIcon = (By.cssSelector("span.login__support-icon"));
     By logOutButton = (By.xpath("//*[contains(text(), ' Выйти ')]"));
     By alertInvalidLogin = (By.cssSelector(".validation-messages__item.ng-star-inserted"));
-
-
 
     WebDriver driver;
     WebDriverWait wait;
