@@ -3,18 +3,31 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import java.util.concurrent.TimeUnit;
+
 public class TestWithXpath {
     WebDriver driver;
+    WebDriverWait wait1;
+    FluentWait fluentwait2;
 
     @BeforeTest
     public void downloadDriver() {
         WebDriverManager.chromedriver().setup();
-
         driver = new ChromeDriver();
+//        exleption
+        wait1 = new WebDriverWait(driver, 10);
+        fluentwait2 = new FluentWait(driver);
+        fluentwait2.withTimeout(5000, TimeUnit.MILLISECONDS);
+        fluentwait2.pollingEvery(200, TimeUnit.MILLISECONDS);
+
+
     }
 
     @AfterTest
@@ -55,6 +68,10 @@ public class TestWithXpath {
 
         //когда надо достучаться до частичного текста
         WebElement test8 = driver.findElement(By.xpath("//button[contains(text(), 'time')]"));
+        wait1.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[contains(text(), 'time')]")));
+        fluentwait2.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//button[contains(text(), 'time')]")));
+        test8.click();
+
         System.out.println((test8.getText()));
 
         String myLabel = "time";
@@ -64,4 +81,5 @@ public class TestWithXpath {
         System.out.println(myString1);
 
     }
+
 }
