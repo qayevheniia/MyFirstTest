@@ -17,7 +17,7 @@ public class SelenideTest {
     Header header = new Header();
 
 
-    @Test
+
     public void newTest(){
          Configuration.browser = System.getProperty("browser");
 //        чтоб запустить на бекраунде тесты headlesa

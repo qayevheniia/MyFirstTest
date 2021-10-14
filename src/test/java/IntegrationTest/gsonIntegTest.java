@@ -2,6 +2,7 @@ package IntegrationTest;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.common.primitives.Ints;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
@@ -12,7 +13,12 @@ import io.restassured.specification.RequestSpecification;
 import org.json.JSONObject;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
+
 public class gsonIntegTest {
 
     @Test
@@ -80,9 +86,62 @@ public class gsonIntegTest {
 
         JsonObject jsonObjectResponse = new JsonParser().parse(responseString).getAsJsonObject();
         Gson gson = new Gson();
-        deleteUser res = gson.fromJson(response.body().asString(),deleteUser.class);
-        System.out.println(res.status +" " +res.message +" " +res.data);
+        deleteUser res = gson.fromJson(response.body().asString(), deleteUser.class);
+        System.out.println(res.status + " " + res.message + " " + res.data);
         Assert.assertEquals(response.getStatusCode(), 200);
     }
-}
+
+    @Test
+    public void disemvowel() {
+        String str = "Hi, am the best";
+        String result = "";
+        String[] arrayString = str.split("");
+
+        for (String newAgain : arrayString
+        ) {
+            if (!(newAgain.equals("a") || (newAgain.equals("e")) || (newAgain.equals("i")) || (newAgain.equals("o")) || (newAgain.equals("u")))) {
+                result += newAgain;
+            }
+
+        }
+        System.out.println(result);
+    }
+ @Test
+    public void mergeAndSort(){
+        int[] input1 = new int[] {1,26,4,8};
+        int[] input2 = new int[]{5,7, 9};
+     int size = input1.length +input2.length;
+
+     int[] result = new int [size];
+
+        int i = 0;
+        int a =0;
+        while (size>i){
+            if(input1.length>i){
+                result[i]=input1[i];
+            }else {
+                result[i]=input2[a];
+                a++;
+            }
+            i++;
+        }
+//       Arrays.sort(result);
+     for (int j = 0; j<result.length-1; j++) {
+         for (int k = j+1; k < result.length; k++){
+             if (result[j] > result[k]) {
+                 int dummy = result[k];
+                 result[k] =result[j];
+                 result[j] = dummy;
+             }
+         }
+     }
+
+     System.out.println(Arrays.toString(result));
+ }
+
+    }
+
+
+
+
 

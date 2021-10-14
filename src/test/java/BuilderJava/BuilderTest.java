@@ -12,7 +12,6 @@ import org.testng.annotations.Test;
 import java.util.concurrent.TimeUnit;
 
 
-@Builder
 
 public class BuilderTest {    WebDriver driver;
     public static FluentWait fluentwait2;
